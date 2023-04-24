@@ -30,9 +30,7 @@ node_list = ['ns=3;s="VolumeFlowNew"', 'ns=3;s="DensityNew"', 'ns=3;s="Temperatu
              'ns=3;s="Lab_Parameter"."Process_Cond"', 'ns=3;s="ParameterProcess"."uWorkingSet"."uSubStepParams"[12]."Params"[4]."iPumpSpeed"']
                                             
 # Connect to PostgreSQL database
-#conn = psycopg2.connect(dbname="suppliers", port= 6543, user="postgres", password="inseldip2023")
-# Connect to PostgreSQL database docker file
-conn = psycopg2.connect(dbname="inseldip", port= 6543, user="postgres", password="inseldip2023", host="host.docker.internal")
+conn = psycopg2.connect(dbname="postgres", port= 5432, user="postgres", password="inseldip2023", host="10.0.2.13")
 while True:
     # Read node values
     values = [client.get_node(node).get_value() for node in node_list]

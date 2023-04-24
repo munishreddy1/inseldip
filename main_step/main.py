@@ -3,7 +3,7 @@ import psycopg2
 
 
 # Define OPC-UA connection parameters
-url = "opc.tcp://192.168.0.1:4840"
+url = "opc.tcp://10.162.80.8:4840"
 
 # Connection to OPC-UA server
 client = opcua.Client(url)

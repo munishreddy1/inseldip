@@ -1,24 +1,18 @@
-FROM python:latest
-
+FROM ubuntu:18.04
+RUN apt-get update
+RUN apt-get install -y python3.11 python-pip
 WORKDIR /main
 
 ADD main.py .
 
 COPY . .
+RUN apt-get update && \
+    apt-get install -y gcc make 
+RUN apt-get install libxml2-dev libxslt-dev python-dev -y
+RUN apt-get install libpq-dev -y
 
-RUN pip3 install opcua psycopg2
+RUN pip install opcua psycopg2 
 
-ENV PYTHONUNBUFFERED=1
+ENTRYPOINT ["python3"]
 
-ENTRYPOINT ["python", "main.py"]
-
-CMD ["python", "./main.py", "--host=host.docker.internal"]
-# FROM python:3.6
-
-# RUN pip install -r requirements.txt
-
-# COPY . /app
-
-# WORKDIR /app
-
-# CMD ["python", "./code.py"]
+CMD ["./main.py"]
