@@ -1,0 +1,18 @@
+FROM ubuntu:18.04
+RUN apt-get update
+RUN apt-get install -y python3.11 python-pip
+WORKDIR /main
+
+ADD main.py .
+
+COPY . .
+RUN apt-get update && \
+    apt-get install -y gcc make 
+RUN apt-get install libxml2-dev libxslt-dev python-dev -y
+RUN apt-get install libpq-dev -y
+
+RUN pip install opcua psycopg2 
+
+ENTRYPOINT ["python3"]
+
+CMD ["./main.py"]
