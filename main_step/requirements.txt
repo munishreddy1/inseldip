@@ -1,0 +1,3 @@
+opcua
+psycopg2
+opcua-client

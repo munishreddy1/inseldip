@@ -1,0 +1,24 @@
+FROM python:latest
+
+WORKDIR /main
+
+ADD main.py .
+
+COPY . .
+
+RUN pip3 install opcua psycopg2
+
+ENV PYTHONUNBUFFERED=1
+
+ENTRYPOINT ["python", "main.py"]
+
+CMD ["python", "./main.py", "--host=host.docker.internal"]
+# FROM python:3.6
+
+# RUN pip install -r requirements.txt
+
+# COPY . /app
+
+# WORKDIR /app
+
+# CMD ["python", "./code.py"]
