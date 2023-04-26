@@ -114,8 +114,8 @@ if 'ns=3;s="Lab_Parameter"."Process_Cond"' != 1:
     cur.close()
 #Writing values to main_steps table    
     cur = conn.cursor()
-    cur.execute('''INSERT INTO main_steps (ms0, ms1, ms2, ms3, ms4, ms5, ms6, ms7, ms8, ms9, ms10, ms11, ms12, ms13, ms14, ms15, ms16, 
-                                        ms17, ms18, ms19, ms20, ms21, ms22, ms23, ms24, ms25, ms26, ms27, ms28, ms29, ms30, ms31, testid)
+    cur.execute('''INSERT INTO main_steps (testid, ms0, ms1, ms2, ms3, ms4, ms5, ms6, ms7, ms8, ms9, ms10, ms11, ms12, ms13, ms14, ms15, ms16, 
+                                        ms17, ms18, ms19, ms20, ms21, ms22, ms23, ms24, ms25, ms26, ms27, ms28, ms29, ms30, ms31)
                      VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
                              %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)''', 
                      (values_main_steps[0], values_main_steps[1], values_main_steps[2], values_main_steps[3], values_main_steps[4], values_main_steps[5], values_main_steps[6], values_main_steps[7], values_main_steps[8], values_main_steps[9], 
