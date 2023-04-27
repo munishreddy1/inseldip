@@ -33,10 +33,10 @@ while True:
     cur = conn.cursor()
 
     cur.execute('''INSERT INTO online_data (testid3, magnettemp, rotorfreq, pumpfreq, fluidtemp, conductivity, ph, density, 
-                   voumeflow, volumeflowanalog, TempCoriolis, massflow, absorbance, volumeflowsetpoint, valve1, valve2, 
+                   voumeflow, volumeflowanalog, "TempCoriolis", massflow, absorbance, volumeflowsetpoint, valve1, valve2, 
                    valve3, valve4, valve5, valve6, valve8, valve9, valve10, valve11, valve12, valve13, magnetstatus, mainstepname, 
                    substepname, actsubsteptime, setsubsteptime, totalprocesstime, manualtransferonoff, conttransferonoff, recipe_vf, 
-                   volumeFlowNew, DensityNew, MassFlowNew, TemperatureNew) VALUES 
+                   "VolumeFlowNew", "DensityNew", "MassFlowNew", "TemperatureNew") VALUES 
                    (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
                     %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, )''', 
                    (values[0], values[1], values[2], values[3], values[4], values[5], 
