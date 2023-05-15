@@ -101,8 +101,23 @@ values_pre_process = [client.get_node(node).get_value() for node in node_list_pr
 values_main_steps = [client.get_node(node).get_value() for node in node_list_main_steps]
 values_sub_steps = [client.get_node(node).get_value() for node in node_list_sub_steps]
     
-if 'ns=3;s="Lab_Parameter"."Process_Cond"' != 1:
-    # Insert values into the pre_process PostgreSQL database
+if ('"Lab_Parameter"."Recipe_Reset"' != 'Reset_post') and ('"Lab_Parameter"."Recipe_Reset"' != 'Reset_steps') and ('"Lab_Parameter"."Recipe_Reset"' != 'Reset'):
+            # Change values if necessary
+    for i in range(len(values_pre_process)):
+        if node_list_pre_process[i] == 'ns=3;s="Lab_Parameter"."Operation"':
+           if values_pre_process[i] == 1:
+                    values_pre_process[i] = 'Washing BIONs'
+           elif values_pre_process[i] == 2:
+                    values_pre_process[i] = 'Protein purification'
+           elif values_pre_process[i] == 4:
+                    values_pre_process[i] = 'Test'
+        elif "AdsorptionModel" in node_list_pre_process[i]:
+            if values_pre_process[i] == 1:
+                values_pre_process[i] = "Langmuir"
+            elif values_pre_process[i] == 2:
+                values_pre_process[i] = "Freundlich"
+            elif values_pre_process[i] == 4:
+                values_pre_process[i] = "test"
 
     cur = conn.cursor()
     cur.execute('''INSERT INTO pre_process(testid, process_cond, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10, 
