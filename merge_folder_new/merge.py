@@ -102,6 +102,7 @@ values_main_steps = [client.get_node(node).get_value() for node in node_list_mai
 values_sub_steps = [client.get_node(node).get_value() for node in node_list_sub_steps]
     
 if ('"Lab_Parameter"."Recipe_Reset"' != 'Reset_post') and ('"Lab_Parameter"."Recipe_Reset"' != 'Reset_steps') and ('"Lab_Parameter"."Recipe_Reset"' != 'Reset'):
+#if (values_pre_process[] = 0)
             # Change values if necessary
     for i in range(len(values_pre_process)):
         if node_list_pre_process[i] == 'ns=3;s="Lab_Parameter"."Operation"':
